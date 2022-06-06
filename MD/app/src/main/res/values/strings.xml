@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">CapstoneDermApps</string>
+    <string name="name_app">Derm App</string>
+    <string name="description">Masuk dengan akun anda...</string>
+    <string name="input_email">Email</string>
+    <string name="invalid_email">Invalid Email</string>
+    <string name="input_pass">Password</string>
+    <string name="invalid_password">Invalid Password</string>
+    <string name="example_underline"><u>Belum punya akun?</u></string>
+    <string name="desc_regis">Daftar akun anda disini yaa..</string>
+    <string name="must_filled">Must filled</string>
+    <string name="input_name">Name</string>
+    <string name="input_age">Age</string>
+    <string name="input_gender">Gender</string>
+    <string name="lupa_password"><u>Lupa password?</u></string>
+    <string name="switch_camera">switch camera</string>
+    <string name="capture_image">Capture Image</string>
+    <string name="description_terms_conditions">1. Aplikasi ini membutuhkan akses kamera agar dapat menangkap foto kulitmu. Foto tersebut akan digunakan untuk dikenali penyakit kulitnya.</string>
+    <string name="description_terms_conditions1">2. Aplikasi ini tidak memerlukan seluruh bagian wajah atau badan untuk mendeteksi penyakitnya. Pengguna cukup mengarahkan kamera kepada bagian kulit yang bermasalah untuk aplikasi ini deteksi.</string>
+    <string name="camera">Camera</string>
+    <string name="image_preview">Image preview</string>
+    <string name="invalid_permission">Can\'t get permission</string>
+</resources>

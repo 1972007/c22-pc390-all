@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "856953025529",
+    "project_id": "fir-dermapp",
+    "storage_bucket": "fir-dermapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:856953025529:android:883d1ca812e4389c0e0328",
+        "android_client_info": {
+          "package_name": "com.example.capstonedermapps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "856953025529-53a9lt2csjvsd29bbt566fjjst4ngneh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-vOrUdS2K6M2BevjcQ92R1KHdk1U1Gk0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "856953025529-53a9lt2csjvsd29bbt566fjjst4ngneh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

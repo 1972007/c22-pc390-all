@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/blue"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
+
+    <TextView
+        android:id="@+id/name_app"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/name_app"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/photo_user"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/account"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name_app" />
+
+
+    <TextView
+        android:id="@+id/desc"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/desc_regis"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.301"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/photo_user" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_login"
+        android:layout_width="340dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:backgroundTint="@color/white"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/desc">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_marginTop="25dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/vnama"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"/>
+
+                <com.example.capstonedermapps.customview.EditTextName
+                    android:id="@+id/et_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/input_name"
+                    android:textColorHint="@color/black"
+                    android:textColor="@color/black"
+                    android:inputType="textEmailAddress"
+                    android:minHeight="48dp"
+                    android:paddingStart="16sp"
+                    android:paddingEnd="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="25dp"
+                android:layout_width="330dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:src="@drawable/vage"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"/>
+
+                <com.example.capstonedermapps.customview.EditTextAge
+                    android:id="@+id/et_age"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/input_age"
+                    android:textColorHint="@color/black"
+                    android:textColor="@color/black"
+                    android:inputType="textEmailAddress"
+                    android:minHeight="48dp"
+                    android:paddingStart="16sp"
+                    android:paddingEnd="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:src="@drawable/gender"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"/>
+
+                <com.example.capstonedermapps.customview.EditTextGender
+                    android:id="@+id/et_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/input_gender"
+                    android:textColorHint="@color/black"
+                    android:textColor="@color/black"
+                    android:inputType="textEmailAddress"
+                    android:minHeight="48dp"
+                    android:paddingStart="16sp"
+                    android:paddingEnd="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:src="@drawable/vemail"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+
+                <com.example.capstonedermapps.customview.EditTextEmail
+                    android:id="@+id/et_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/input_email"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:inputType="textEmailAddress"
+                    android:minHeight="48dp"
+                    android:layout_marginStart="10dp"
+                    android:paddingStart="16sp"
+                    android:paddingEnd="16sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:src="@drawable/vpass"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"/>
+
+                <com.example.capstonedermapps.customview.EditTextPassword
+                    android:id="@+id/et_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/input_pass"
+                    android:textColorHint="@color/black"
+                    android:inputType="textEmailAddress"
+                    android:minHeight="48dp"
+                    android:paddingStart="16sp"
+                    android:paddingEnd="16sp"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/btn_regis"
+        android:layout_width="100dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/btnregis"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_login" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
