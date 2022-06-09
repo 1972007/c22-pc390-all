@@ -60,6 +60,7 @@
         <LinearLayout
             android:id="@+id/lnEmail"
             android:layout_marginTop="40dp"
+            android:padding="10dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -157,7 +158,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/example_underline"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

@@ -27,6 +27,7 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
             <TextView
+                android:layout_marginStart="10dp"
                 android:hint="nama"
                 android:id="@+id/ed_namahome"
                 android:textSize="20sp"
@@ -88,6 +89,7 @@
             <TextView
                 android:text="@string/scan_wajah"
                 android:textStyle="bold"
+                android:layout_marginTop="10dp"
                 android:textSize="20sp"
                 android:layout_gravity="center"
                 android:textColor="@color/white"
@@ -116,6 +118,7 @@
             <TextView
                 android:text="@string/skin_wiki"
                 android:textStyle="bold"
+                android:layout_marginTop="10dp"
                 android:textSize="20sp"
                 android:layout_gravity="center"
                 android:textColor="@color/white"
@@ -145,6 +148,7 @@
             <TextView
                 android:text="@string/about_us"
                 android:textStyle="bold"
+                android:layout_marginTop="10dp"
                 android:textSize="20sp"
                 android:layout_gravity="center"
                 android:textColor="@color/white"
