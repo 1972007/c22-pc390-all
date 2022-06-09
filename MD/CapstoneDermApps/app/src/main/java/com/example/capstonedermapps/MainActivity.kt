@@ -8,7 +8,7 @@ import com.example.capstonedermapps.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var activityMainBinding : ActivityMainBinding
+    private lateinit var activityMainBinding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,26 +16,28 @@ class MainActivity : AppCompatActivity() {
         setContentView(activityMainBinding.root)
 
 
-        activityMainBinding.cardScan.setOnClickListener{
+        activityMainBinding.cardScan.setOnClickListener {
             startActivity(Intent(this, ScanActivity::class.java))
         }
 
-        activityMainBinding.cardWiki.setOnClickListener{
+        activityMainBinding.cardWiki.setOnClickListener {
             startActivity(Intent(this, SkinWikiActivity::class.java))
         }
-        activityMainBinding.card.setOnClickListener{
+        activityMainBinding.cardAbout.setOnClickListener {
             startActivity(Intent(this, AboutUsActivity::class.java))
         }
 
-        activityMainBinding.vLogout.setOnClickListener {
-            logout()
+        activityMainBinding.linIcon.setOnClickListener {
             AlertDialog.Builder(this).apply {
                 setMessage(getString(R.string.log_out_success))
                 setPositiveButton(getString(R.string.continue_)) { _, _ ->
-                    startActivity(Intent(this@MainActivity, SignInActivity::class.java))
+                    startActivity(Intent(this@MainActivity, LoginActivity::class.java))
                     finish()
                 }
                 create()
                 show()
+            }
+        }
+
     }
 }

@@ -54,7 +54,7 @@ class LoginActivity : AppCompatActivity() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    startActivity(Intent(this, MainActivity::class.java))
+                    startActivity(Intent(this, TermsAndConditionsActivity::class.java))
                     finishAffinity()
                 } else {
                     Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()

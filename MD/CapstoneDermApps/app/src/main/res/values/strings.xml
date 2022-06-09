@@ -24,4 +24,8 @@
     <string name="skin_wiki">Skin Wiki</string>
     <string name="scan_wajah">Scan Wajah</string>
     <string name="about_dermapp">Aplikasi DermApps merupakan aplikasi berbasis mobile yang dirancang untuk memudahkan pengguna diatas umur 17-60 tahun untuk mengetahui permasalahan kulit wajah, seperti masalah jerawat dan masalah wajah yang lainnya.</string>
+    <string name="log_out_success">Log out sukses</string>
+    <string name="continue_">continue</string>
+    <string name="welcome">Hi, Kak</string>
+    <string name="contact_us">Contact Us</string>
 </resources>

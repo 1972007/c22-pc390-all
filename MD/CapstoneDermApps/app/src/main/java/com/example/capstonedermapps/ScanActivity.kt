@@ -107,6 +107,10 @@ class ScanActivity : AppCompatActivity() {
     }
 
     private fun startHasil(){
+        val intent = Intent()
+        intent.action = Intent.ACTION_GET_CONTENT
+        intent.type ="image/*"
+        startActivity(Intent(this, ActivityHasilScanning::class.java))
 
     }
     private val launcherIntentGallery = registerForActivityResult(

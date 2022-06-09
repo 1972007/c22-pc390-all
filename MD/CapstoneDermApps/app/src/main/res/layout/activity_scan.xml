@@ -67,20 +67,22 @@
                 android:layout_marginEnd="30dp"
                 android:id="@+id/btn_Camera_X"
                 android:text="Camera"
-                android:textSize="18dp"
+                android:textSize="14dp"
+                android:backgroundTint="@color/white"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:layout_width="150dp"
-                android:layout_height="65dp"/>
+                android:layout_width="100dp"
+                android:layout_height="60dp"/>
             <Button
                 android:layout_marginStart="10dp"
                 android:id="@+id/btn_Gallery"
-                android:text="Gallery"
-                android:textSize="18dp"
+                android:text="Galery"
+                android:textSize="14dp"
                 android:textStyle="bold"
+                android:backgroundTint="@color/white"
                 android:textColor="@color/black"
-                android:layout_width="150dp"
-                android:layout_height="65dp"/>
+                android:layout_width="100dp"
+                android:layout_height="60dp"/>
 
 
         </LinearLayout>
@@ -88,6 +90,7 @@
         <ImageView
             android:layout_marginTop="30dp"
             android:layout_gravity="center"
+            android:padding="5dp"
             android:id="@+id/btn_hasil"
             android:layout_width="150dp"
             android:layout_height="100dp"
