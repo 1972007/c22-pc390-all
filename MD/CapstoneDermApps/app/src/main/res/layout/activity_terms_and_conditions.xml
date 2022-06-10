@@ -23,53 +23,69 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_desc"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:padding="10dp"
-        android:gravity="center"
+        android:layout_gravity="center"
+        android:padding="30dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="30dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/judul"
-        android:orientation="vertical">
+        app:layout_constraintTop_toBottomOf="@+id/judul">
 
-        <TextView
-            android:id="@+id/desc_terms_and_conditions"
-            android:layout_width="match_parent"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:text="@string/description_terms_conditions"
-            android:textColor="@color/white"
-            android:textSize="22dp"
-            android:textStyle="bold"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="185dp" />
-        <TextView
-            android:id="@+id/desc_terms_conditions"
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center"
-            android:text="@string/description_terms_conditions1"
-            android:textColor="@color/white"
-            android:textSize="22dp"
-            android:textStyle="bold"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="185dp" />
+            android:padding="20dp"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/judul"
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/desc_terms_and_conditions"
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:text="@string/description_terms_conditions"
+                android:textColor="@color/black"
+                android:textSize="22dp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="185dp" />
+            <TextView
+                android:id="@+id/desc_terms_conditions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:text="@string/description_terms_conditions1"
+                android:textColor="@color/black"
+                android:textSize="22dp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="185dp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
 
     <ImageView
         android:id="@+id/btn_setuju"
         android:layout_width="150dp"
         android:layout_height="100dp"
-        android:src="@drawable/vterms"
         android:padding="10dp"
+        android:src="@drawable/vterms"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/card_desc"
+        app:layout_constraintVertical_bias="0.239" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

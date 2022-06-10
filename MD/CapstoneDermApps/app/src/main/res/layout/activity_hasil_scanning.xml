@@ -8,7 +8,7 @@
     tools:context=".ActivityHasilScanning">
 
 
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/lin_name"
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -27,12 +27,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="17dp"
+            android:layout_marginTop="15dp"
             android:text="Hasil Scanning"
             android:textColor="@color/black"
             android:textSize="22dp"
             android:textStyle="bold" />
-    </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
 
     <RelativeLayout
         android:id="@+id/rl_imgpreview"

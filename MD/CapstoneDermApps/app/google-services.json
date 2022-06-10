@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "856953025529",
+    "firebase_url": "https://fir-dermapp-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "fir-dermapp",
     "storage_bucket": "fir-dermapp.appspot.com"
   },

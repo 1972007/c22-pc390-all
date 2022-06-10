@@ -4,7 +4,6 @@ import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Patterns
 import android.widget.Toast
 import com.example.capstonedermapps.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -23,83 +22,78 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(activityRegisterBinding.root)
 
         auth = FirebaseAuth.getInstance()
-        ref = FirebaseDatabase.getInstance().getReference("USER")
+        ref = FirebaseDatabase.getInstance().getReference("USERS")
+
 
         
         activityRegisterBinding.btnRegis.setOnClickListener{
             val email = activityRegisterBinding.etEmail.text.toString().trim()
             val pass = activityRegisterBinding.etPassword.text.toString().trim()
-            val nama = activityRegisterBinding.etName.text.toString().trim()
+            val name = activityRegisterBinding.etName.text.toString().trim()
             val age = activityRegisterBinding.etAge.text.toString().trim()
             val gender = activityRegisterBinding.etGender.text.toString().trim()
-            
-            if (checkValidation(email, pass,nama,age,gender )){
-                registerToServer(email,pass,nama,age,gender)
+
+            if(name.isEmpty()){
+                activityRegisterBinding.etName.error = "Name required"
+                activityRegisterBinding.etName.requestFocus()
+                return@setOnClickListener
             }
+            if(age.isEmpty()){
+                activityRegisterBinding.etAge.error = "Age required"
+                activityRegisterBinding.etAge.requestFocus()
+                return@setOnClickListener
+            }
+            if(gender.isEmpty()){
+                activityRegisterBinding.etGender.error = "Gender required"
+                activityRegisterBinding.etGender.requestFocus()
+                return@setOnClickListener
+            }
+            if(email.isEmpty()){
+                activityRegisterBinding.etEmail.error = "Email required"
+                activityRegisterBinding.etEmail.requestFocus()
+                return@setOnClickListener
+            }
+            if(pass.isEmpty()|| pass.length <6){
+                activityRegisterBinding.etPassword.error = "Password required"
+                activityRegisterBinding.etPassword.requestFocus()
+                return@setOnClickListener
+            }
+            registerToServer( name, age, gender, email, pass)
         }
     }
 
-    private fun checkValidation(email: String, pass: String, nama: String, age: String, gender: String): Boolean {
-        if (email.isEmpty()){
-            activityRegisterBinding.etEmail.error = "Please field your email"
-            activityRegisterBinding.etEmail.requestFocus()
-        }else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            activityRegisterBinding.etEmail.error = "Please use valid email"
-            activityRegisterBinding.etEmail.requestFocus()
-        } else if(pass.isEmpty()){
-            activityRegisterBinding.etPassword.error="Please field your password"
-            activityRegisterBinding.etPassword.requestFocus()
-        }else if(nama.isEmpty()) {
-            activityRegisterBinding.etName.error = "Please field your name"
-            activityRegisterBinding.etName.requestFocus()
-        }else if(age.isEmpty()) {
-            activityRegisterBinding.etAge.error = "Please field your age"
-            activityRegisterBinding.etAge.requestFocus()
-        }else if(gender.isEmpty()) {
-            activityRegisterBinding.etGender.error = "Please field your gender"
-            activityRegisterBinding.etGender.requestFocus()
-        }else{
-            activityRegisterBinding.etPassword.error = null
-            return true
-        }
-        return false
-    }
 
-    private fun registerToServer(email:String, pass: String, nama: String, age: String, gender: String) {
+    private fun registerToServer(name: String, age: String, gender: String, email:String, pass: String) {
         val progressDialog = ProgressDialog(this@RegisterActivity)
         progressDialog.setTitle("Registrasi User")
         progressDialog.setMessage("Please wait")
         progressDialog.setCanceledOnTouchOutside(false)
         progressDialog.show()
-        FirebaseAuth.getInstance()
-            .createUserWithEmailAndPassword(email, pass)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    saveUser(email,nama,age,gender,progressDialog)
-                }
+        auth.createUserWithEmailAndPassword(email, pass) .addOnCompleteListener (this){
+            if(it.isSuccessful){
+                saveUser(name, age, gender,email, progressDialog)
+            }else{
+                val message = it.exception!!.toString()
+                Toast.makeText(this,"Error :$message", Toast.LENGTH_SHORT).show()
             }
-            .addOnFailureListener{
-                Toast.makeText(this,"Register is Failed", Toast.LENGTH_SHORT).show()
-            }
+        }
     }
 
 
-    private fun saveUser(nama: String, email: String, age: String, gender: String, progressDialog: ProgressDialog){
+    private fun saveUser(name: String,  age: String, gender: String,email: String, progressDialog: ProgressDialog){
         val currentUserId =auth.currentUser!!.uid
-        ref = FirebaseDatabase.getInstance().reference.child("USER")
+        ref = FirebaseDatabase.getInstance().reference.child("USERS")
         val userMap = HashMap<String,Any>()
-        userMap["id"] =  currentUserId
-        userMap["email"] = email
-        userMap["nama"] = nama
+        userMap["name"] = name
         userMap["age"] = age
         userMap["gender"] = gender
-
+        userMap["id"] =  currentUserId
+        userMap["email"] = email
         ref.child(currentUserId).setValue(userMap).addOnCompleteListener{
             if(it.isSuccessful){
                 progressDialog.dismiss()
                 Toast.makeText(this, "register is succesfully", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, LoginActivity::class.java))
-                finishAffinity()
             }else{
                 val message = it.exception!!.toString()
                 Toast.makeText(this, "Error: $message", Toast.LENGTH_SHORT).show()

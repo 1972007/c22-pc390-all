@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         activityMainBinding.linIcon.setOnClickListener {
             AlertDialog.Builder(this).apply {
                 setMessage(getString(R.string.log_out_success))
-                setPositiveButton(getString(R.string.continue_)) { _, _ ->
+                setPositiveButton(getString(R.string.continue_)) { _,_ ->
                     startActivity(Intent(this@MainActivity, LoginActivity::class.java))
                     finish()
                 }
