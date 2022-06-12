@@ -1,7 +1,10 @@
 # c22-pc390-all
-Kumpulan proyek capstone c22-pc390
+Collections of capstone c22-pc390's files
 
-Kalau sudah buat colab sendiri, blleh komen linknya
+For the ML Department :
+https://github.com/1972007/ml-c22-pc390
 
-Untuk google colab :
-Joseph : https://github.com/1972007/ml-c22-pc390
+flask_ml_app:
+  A Flask Backend app that is posted on a google cloud app. This app contains a JSON generator based on the image user sent.
+The app link can be found here:
+  https://onyx-principle-346917.et.r.appspot.com/predict
