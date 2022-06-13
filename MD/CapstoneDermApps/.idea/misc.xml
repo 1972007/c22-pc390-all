@@ -20,16 +20,19 @@
         <entry key="..\:/CapstoneDermApps/app/src/main/res/layout/activity_terms_and_conditions.xml" value="0.1814814814814815" />
         <entry key="..\:/CapstoneDermApps/app/src/main/res/layout/splashscreen.xml" value="0.20416666666666666" />
         <entry key="..\:/CapstoneDermApps/app/src/main/res/menu/option_menu.xml" value="0.1814814814814815" />
-        <entry key="..\:/Users/USER/Documents/GitHub/c22-pc390-all/MD/CapstoneDermApps/app/src/main/res/layout/activity_about_us.xml" value="0.1814814814814815" />
+        <entry key="..\:/Users/USER/Documents/GitHub/c22-pc390-all/MD/CapstoneDermApps/app/src/main/res/layout/activity_about_us.xml" value="0.22" />
         <entry key="..\:/Users/USER/Documents/GitHub/c22-pc390-all/MD/CapstoneDermApps/app/src/main/res/layout/activity_camera.xml" value="0.17731481481481481" />
         <entry key="..\:/Users/USER/Documents/GitHub/c22-pc390-all/MD/CapstoneDermApps/app/src/main/res/layout/activity_data_user.xml" value="0.1814814814814815" />
         <entry key="..\:/Users/USER/Documents/GitHub/c22-pc390-all/MD/CapstoneDermApps/app/src/main/res/layout/activity_hasil_scanning.xml" value="0.22" />
         <entry key="..\:/Users/USER/Documents/GitHub/c22-pc390-all/MD/CapstoneDermApps/app/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/Users/USER/Documents/GitHub/c22-pc390-all/MD/CapstoneDermApps/app/src/main/res/layout/activity_lupa_pass.xml" value="0.1308876811594203" />
         <entry key="..\:/Users/USER/Documents/GitHub/c22-pc390-all/MD/CapstoneDermApps/app/src/main/res/layout/activity_main.xml" value="0.1814814814814815" />
         <entry key="..\:/Users/USER/Documents/GitHub/c22-pc390-all/MD/CapstoneDermApps/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/Users/USER/Documents/GitHub/c22-pc390-all/MD/CapstoneDermApps/app/src/main/res/layout/activity_scan.xml" value="0.18" />
-        <entry key="..\:/Users/USER/Documents/GitHub/c22-pc390-all/MD/CapstoneDermApps/app/src/main/res/layout/activity_skin_wiki.xml" value="0.1" />
+        <entry key="..\:/Users/USER/Documents/GitHub/c22-pc390-all/MD/CapstoneDermApps/app/src/main/res/layout/activity_skin_wiki.xml" value="0.25" />
         <entry key="..\:/Users/USER/Documents/GitHub/c22-pc390-all/MD/CapstoneDermApps/app/src/main/res/layout/activity_terms_and_conditions.xml" value="0.2" />
+        <entry key="..\:/Users/USER/Documents/GitHub/c22-pc390-all/MD/CapstoneDermApps/app/src/main/res/layout/fragment_data_user.xml" value="0.1814814814814815" />
+        <entry key="..\:/Users/USER/Documents/GitHub/c22-pc390-all/MD/CapstoneDermApps/app/src/main/res/layout/fragment_user.xml" value="0.18055555555555555" />
       </map>
     </option>
   </component>

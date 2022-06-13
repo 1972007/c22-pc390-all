@@ -10,11 +10,12 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
+@Suppress("DEPRECATION")
 class RegisterActivity : AppCompatActivity() {
     
     private lateinit var activityRegisterBinding: ActivityRegisterBinding
     private lateinit var auth : FirebaseAuth
-    lateinit var ref : DatabaseReference
+    private lateinit var ref : DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         activityRegisterBinding = ActivityRegisterBinding.inflate(layoutInflater)
@@ -65,7 +66,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun registerToServer(name: String, age: String, gender: String, email:String, pass: String) {
         val progressDialog = ProgressDialog(this@RegisterActivity)
-        progressDialog.setTitle("Registrasi User")
+        progressDialog.setTitle("Register User")
         progressDialog.setMessage("Please wait")
         progressDialog.setCanceledOnTouchOutside(false)
         progressDialog.show()
@@ -81,13 +82,13 @@ class RegisterActivity : AppCompatActivity() {
 
 
     private fun saveUser(name: String,  age: String, gender: String,email: String, progressDialog: ProgressDialog){
-        val currentUserId =auth.currentUser!!.uid
+        val currentUserId= auth.currentUser?.uid
         ref = FirebaseDatabase.getInstance().reference.child("USERS")
         val userMap = HashMap<String,Any>()
         userMap["name"] = name
         userMap["age"] = age
         userMap["gender"] = gender
-        userMap["id"] =  currentUserId
+        userMap["id"] =  currentUserId!!
         userMap["email"] = email
         ref.child(currentUserId).setValue(userMap).addOnCompleteListener{
             if(it.isSuccessful){

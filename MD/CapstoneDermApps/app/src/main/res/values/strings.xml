@@ -26,8 +26,12 @@
     <string name="about_dermapp">Aplikasi DermApps merupakan aplikasi berbasis mobile yang dirancang untuk memudahkan pengguna diatas umur 17-60 tahun untuk mengetahui permasalahan kulit wajah, seperti masalah jerawat dan masalah wajah yang lainnya.</string>
     <string name="log_out_success">Log out sukses</string>
     <string name="continue_">continue</string>
-    <string name="welcome">Hi, Kak</string>
+    <string name="welcome">Hi, Welcome to DermApp</string>
     <string name="contact_us">Contact Us</string>
     <string name="skin_ezcema">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
     <string name="keratosis">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+    <string name="no_attach_file">No file attached, please attach image first</string>
+    <string name="information">Information</string>
+    <string name="upload_success">Upload Success</string>
+    <string name="upload_failed">Upload Failed</string>
 </resources>

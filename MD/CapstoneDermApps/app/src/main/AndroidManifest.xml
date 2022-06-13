@@ -19,13 +19,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CapstoneDermApps">
         <activity
+            android:name=".ActivityDataUser"
+            android:exported="false" />
+        <activity
             android:name=".AboutUsActivity"
             android:exported="false" />
         <activity
             android:name=".SkinWikiActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ActivityDataUser"
             android:exported="false" />
         <activity
             android:name=".ActivityCamera"

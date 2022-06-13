@@ -1,136 +1,89 @@
 package com.example.capstonedermapps
 
-import android.Manifest
 import android.content.Intent
-import android.content.Intent.EXTRA_USER
-import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
-import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AlertDialog
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import com.example.capstonedermapps.databinding.ActivityScanBinding
-import com.example.capstonedermapps.helper.Helper
-import java.io.File
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.core.graphics.drawable.toBitmap
+import com.example.capstonedermapps.ml.Ham10000Xception
+import org.tensorflow.lite.DataType
+import org.tensorflow.lite.support.image.TensorImage
+import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
+
 
 class ScanActivity : AppCompatActivity() {
-    private lateinit var activityScanBinding: ActivityScanBinding
-    private var getFile: File? = null
-    private var result: Bitmap? = null
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == REQUEST_CODE_PERMISSIONS) {
-            if (!allPermissionsGranted()) {
-                Toast.makeText(
-                    this,
-                    getString(R.string.invalid_permission),
-                    Toast.LENGTH_SHORT
-                ).show()
-                finish()
-            }
-        }
-    }
-    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
-        ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
-    }
+    lateinit var bitmap : Bitmap
+    lateinit var imgView: ImageView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activityScanBinding = ActivityScanBinding.inflate(layoutInflater)
-        setContentView(activityScanBinding.root)
+        setContentView(R.layout.activity_scan)
 
-        //user = intent.getParcelableExtra(EXTRA_USER)!!
+        val fileName = "results.txt"
+        val inputString = application.assets.open(fileName).bufferedReader().use { it.readText() }
+        var townList = inputString.split("\n")
 
-        getPermission()
 
-        activityScanBinding.btnCameraX.setOnClickListener { startCameraX() }
-        activityScanBinding.btnGallery.setOnClickListener { startGallery() }
-        activityScanBinding.btnHasil.setOnClickListener { startHasil() }
+        imgView = findViewById(R.id.iv_preview)
 
-    }
-    private fun getPermission() {
-        if (!allPermissionsGranted()) {
-            ActivityCompat.requestPermissions(
-                this,
-                REQUIRED_PERMISSIONS,
-                REQUEST_CODE_PERMISSIONS
-            )
+        val camera: Button = findViewById(R.id.btn_Camera_X)
+        camera.setOnClickListener{
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.type = "image/*"
+            startActivityForResult(intent, 100)
+
         }
-    }
 
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        finish()
-        return true
-    }
+        val identify : Button = findViewById(R.id.btn_identify)
 
-    // cameraX
-    private fun startCameraX() {
-        launcherIntentCameraX.launch(Intent(this, ActivityCamera::class.java))
-    }
+        identify.setOnClickListener {
+            val model = Ham10000Xception.newInstance(this)
+            val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 600, 450, 3), DataType.FLOAT32)
+            bitmap = Bitmap.createScaledBitmap(bitmap,600,450,true)
+            var bitmap = imgView.getDrawable().toBitmap()
+            val tensorImage = TensorImage(DataType.FLOAT32)
+            tensorImage.load(bitmap)
+            val byteBuffer = tensorImage.buffer
+            inputFeature0.loadBuffer(byteBuffer)
 
-    private val launcherIntentCameraX = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ) {
-        if (it.resultCode == CAMERA_X_RESULT) {
-            val myFile = it.data?.getSerializableExtra("picture") as File
-            val isBackCamera = it.data?.getBooleanExtra("isBackCamera", true) as Boolean
+            val outputs = model.process(inputFeature0)
+            val outputFeature0 = outputs.outputFeature0AsTensorBuffer
 
-            getFile = myFile
-            result =
-                Helper
-                    .rotateBitmap(
-                    BitmapFactory.decodeFile(getFile?.path),
-                    isBackCamera
-                )
+            var max= getMax(outputFeature0.floatArray)
+
+            val tvhasil = findViewById<TextView>(R.id.tv_hasil)
+            tvhasil.text = townList[max]
+            model.close()
+
         }
-        activityScanBinding.ivPreview.setImageBitmap(result)
-    }
-
-    private fun startGallery() {
-        val intent = Intent()
-        intent.action = Intent.ACTION_GET_CONTENT
-        intent.type = "image/*"
-        val chooser = Intent.createChooser(intent, "Choose a Picture")
-        launcherIntentGallery.launch(chooser)
-    }
-
-    private fun startHasil(){
-        val intent = Intent()
-        intent.action = Intent.ACTION_GET_CONTENT
-        intent.type ="image/*"
-        startActivity(Intent(this, ActivityHasilScanning::class.java))
 
     }
-    private val launcherIntentGallery = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ) {
-        if (it.resultCode == RESULT_OK) {
-            val selectedImg: Uri = it.data?.data as Uri
-            val myFile = Helper.uriToFile(selectedImg, this@ScanActivity)
-            getFile = myFile
-            activityScanBinding.ivPreview.setImageURI(selectedImg)
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        imgView.setImageURI(data?.data)
+        val uri: Uri? = data?.data
+        bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, uri)
+    }
+
+    fun getMax(arr : FloatArray): Int{
+        var ind = 0
+        var min = 0.0f
+
+        for(i in 0..6){
+            if(arr[i] > min){
+                min = arr[i]
+                ind = i;
+            }
         }
+        return ind
     }
-
-    companion object {
-        const val CAMERA_X_RESULT = 200
-
-        const val EXTRA_USER = "user"
-
-        private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
-        private const val REQUEST_CODE_PERMISSIONS = 10
-    }
-
 }
